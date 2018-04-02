@@ -1,14 +1,17 @@
-namespace SqLiteCodeFirstSample.Properties.DataSources
+namespace SqLiteCodeFirstSample.context
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
-    [Table("customer")]
+
+    [System.ComponentModel.DataAnnotations.Schema.Table("customer")]
     public partial class customer
-    {
+    {       
+     
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]  
+        [Key, Column(Order = 0)]
         public long id { get; set; }
 
         [Required]

@@ -1,5 +1,6 @@
 ﻿
-using SqLiteCodeFirstSample.Properties.DataSources;
+using SqLiteCodeFirstSample.context;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,21 +16,34 @@ namespace SqLiteCodeFirstSample
 {
     public partial class Form1 : Form
     {
-        Model _entities;
+        CustomerModel _entities;
 
 
         public Form1()
         {
             InitializeComponent();
 
+           if (_entities != null)
+                _entities.Dispose();
 
-            //if (_entities != null)
-            //    _entities.Dispose();
+            try
+            {
+                _entities = new CustomerModel();
 
-            _entities = new Model();
-            _entities.customers.Load();        
+                var cust1 = new context.customer() { name = "test customer name", salary = 1000 };
+                context.customer cust2 = new context.customer() { name = "test customer name", salary = 1000 };
+                _entities.customer.Add(cust1);
+                _entities.customer.Add(cust2);
 
-            dataGridView1.DataSource = _entities.customers.Local;
+
+                _entities.customer.Load();
+                dataGridView1.DataSource = _entities.customer.Local;
+            }
+            catch (Exception exc)
+            {
+                var test = 10;
+                MessageBox.Show(exc.StackTrace, exc.Message);
+            }
         }
     }
 }
