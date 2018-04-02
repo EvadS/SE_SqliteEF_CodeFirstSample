@@ -1,8 +1,6 @@
-namespace SqLiteCodeFirstSample.context
+namespace SqLiteCodeFirstSample.DataBase.context
 {
     using System.Data.Entity;
-    using SQLite.CodeFirst;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class CustomerModel : DbContext
     {
@@ -13,26 +11,12 @@ namespace SqLiteCodeFirstSample.context
         }
 
 
-        public CustomerModel(string nameOrConnectionString)
-            : base(nameOrConnectionString)
-        {
-           
-        }
-
         public virtual DbSet<customer> customer { get; set; }
 
-
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //    //MyDbContextInitializer
-            // var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<CustomerModel>(modelBuilder);
-            // Database.SetInitializer(sqliteConnectionInitializer);
-
+        {         
             var contextinitialiser = new MyDbContextInitializer(modelBuilder);
             Database.SetInitializer(contextinitialiser);
-
-
         }
     }
 }

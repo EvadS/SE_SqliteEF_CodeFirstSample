@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SqLiteCodeFirstSample.context
+namespace SqLiteCodeFirstSample.DataBase.context
 {
 
     public class MyDbContextInitializer : SqliteCreateDatabaseIfNotExists <CustomerModel>

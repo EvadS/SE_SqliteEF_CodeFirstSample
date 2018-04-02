@@ -1,8 +1,6 @@
-namespace SqLiteCodeFirstSample.context
+namespace SqLiteCodeFirstSample.DataBase.context
 {
     using SQLite.CodeFirst;
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
