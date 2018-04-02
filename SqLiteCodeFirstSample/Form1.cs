@@ -1,39 +1,40 @@
 ﻿using SqLiteCodeFirstSample.DataBase.context;
+using SqLiteCodeFirstSample.Models;
 using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SqLiteCodeFirstSample
 {
     public partial class Form1 : Form
     {
-        CustomerModel _entities;
+        CustomerModel context;
 
 
         public Form1()
         {
             InitializeComponent();
 
-           if (_entities != null)
-                _entities.Dispose();
+
 
             try
             {
 
-                _entities = new CustomerModel();
+                using (CustomerModel context = new CustomerModel())
+                {
+                    //var cust1 = new customer() { name = "test customer name", salary = 1000 };
+                    //customer cust2 = new customer() { name = "test customer name", salary = 1000 };
 
-                  
-                var cust1 = new customer() { name = "test customer name", salary = 1000 };
-                customer cust2 = new customer() { name = "test customer name", salary = 1000 };
+                    //context.customers.Add(cust1);
+                    //context.customers.Add(cust2);
+                    //context.SaveChanges();
 
-                _entities.customer.Add(cust1);
-                _entities.customer.Add(cust2);
-     
 
-                _entities.SaveChanges();
+                    var data = context.customers.Select(x => new CustomerVm() { id = x.id, name = x.name, salary = x.salary }).ToList();
+                    dataGridView1.DataSource = data;
 
-                _entities.customer.Load();
-                dataGridView1.DataSource = _entities.customer.Local;
+                }
             }
             catch (Exception exc)
             {
