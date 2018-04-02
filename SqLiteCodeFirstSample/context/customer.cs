@@ -1,5 +1,6 @@
 namespace SqLiteCodeFirstSample.context
 {
+    using SQLite.CodeFirst;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -8,10 +9,10 @@ namespace SqLiteCodeFirstSample.context
 
     [System.ComponentModel.DataAnnotations.Schema.Table("customer")]
     public partial class customer
-    {       
-     
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]  
-        [Key, Column(Order = 0)]
+    {
+
+        [Autoincrement]
+        [Key]
         public long id { get; set; }
 
         [Required]

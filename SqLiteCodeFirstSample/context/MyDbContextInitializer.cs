@@ -11,6 +11,8 @@ namespace SqLiteCodeFirstSample.context
 
     public class MyDbContextInitializer : SqliteCreateDatabaseIfNotExists <CustomerModel>
     {
+ 
+
         public MyDbContextInitializer(DbModelBuilder modelBuilder)
             : base(modelBuilder) { }
 

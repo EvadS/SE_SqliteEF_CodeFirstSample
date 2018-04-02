@@ -18,11 +18,13 @@ namespace SqLiteCodeFirstSample.context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //    //MyDbContextInitializer
-             var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<CustomerModel>(modelBuilder);
-             Database.SetInitializer(sqliteConnectionInitializer);
+            // var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<CustomerModel>(modelBuilder);
+            // Database.SetInitializer(sqliteConnectionInitializer);
 
-            modelBuilder.Entity<customer>().Property(a => a.id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
- 
+            var contextinitialiser = new MyDbContextInitializer(modelBuilder);
+            Database.SetInitializer(contextinitialiser);
+
+
         }
     }
 }

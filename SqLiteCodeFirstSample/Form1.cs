@@ -29,12 +29,14 @@ namespace SqLiteCodeFirstSample
             try
             {
                 _entities = new CustomerModel();
+                var cust1 = new customer() { name = "test customer name", salary = 1000 };
+                customer cust2 = new customer() { name = "test customer name", salary = 1000 };
 
-                var cust1 = new context.customer() { name = "test customer name", salary = 1000 };
-                context.customer cust2 = new context.customer() { name = "test customer name", salary = 1000 };
                 _entities.customer.Add(cust1);
                 _entities.customer.Add(cust2);
+     
 
+                _entities.SaveChanges();
 
                 _entities.customer.Load();
                 dataGridView1.DataSource = _entities.customer.Local;
