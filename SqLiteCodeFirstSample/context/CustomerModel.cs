@@ -7,8 +7,16 @@ namespace SqLiteCodeFirstSample.context
     public partial class CustomerModel : DbContext
     {
         public CustomerModel()
-            : base("name=customersDB2")
+            : base("name=customersDB3")
         {
+            Configuration.ProxyCreationEnabled = true;
+        }
+
+
+        public CustomerModel(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        {
+           
         }
 
         public virtual DbSet<customer> customer { get; set; }

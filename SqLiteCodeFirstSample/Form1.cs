@@ -28,7 +28,10 @@ namespace SqLiteCodeFirstSample
 
             try
             {
+
                 _entities = new CustomerModel();
+
+                  
                 var cust1 = new customer() { name = "test customer name", salary = 1000 };
                 customer cust2 = new customer() { name = "test customer name", salary = 1000 };
 
