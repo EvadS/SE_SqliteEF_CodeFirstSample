@@ -1,6 +1,7 @@
 namespace SqLiteCodeFirstSample.DataBase.context
 {
     using SQLite.CodeFirst;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,5 +20,9 @@ namespace SqLiteCodeFirstSample.DataBase.context
 
         [Column(TypeName = "real")]
         public double salary { get; set; }
+
+
+        public long? workid { get; set; }
+        public virtual work work { get; set; }
     }
 }

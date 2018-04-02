@@ -18,11 +18,17 @@ namespace SqLiteCodeFirstSample.DataBase.context
 
         protected override void Seed(CustomerModel context)
         {
-            context.Set<customer>().Add(new customer() { name="NAME", salary=777});
-            context.Set<customer>().Add(new customer() { name = "NAME 3 ", salary = 2777 });
-            context.Set<customer>().Add(new customer() { name = "NAME 5 ", salary = 3777 });
+            work work1 = new work() { name = "work name 1 " };
+            work work2 = new work() { name = "work name 2 " };
 
-            context.Set<customer>().Add(new customer() { name = "NAME 7", salary = 4777 });
+
+            context.work.Add(work1);
+            context.work.Add(work2);
+            context.SaveChanges();
+
+            context.Set<customer>().Add(new customer() { name="NAME", salary=777 , work = work1});
+            context.Set<customer>().Add(new customer() { name = "NAME 3 ", salary = 2777, work = work1  });
+            context.Set<customer>().Add(new customer() { name = "NAME 5 ", salary = 3777 ,work = work2});            
         }
     }
 }

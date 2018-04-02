@@ -11,7 +11,8 @@ namespace SqLiteCodeFirstSample.DataBase.context
         }
 
 
-        public virtual DbSet<customer> customer { get; set; }
+        public virtual DbSet<customer> customers { get; set; }
+        public virtual DbSet<work> work { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {         
